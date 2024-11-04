@@ -51,7 +51,24 @@ function draw() {
     pantallaMuerte();
     return;
   }
-  
+
+  if (rama === 0) {
+    image(inicio[ramaPos], 0, 0, width, height);
+    text(InicioTexto[ramaPos], 0, 50, width);
+    siguiente = true;
+
+    if (ramaPos === 2 || ramaPos === 6 || ramaPos === 9 || ramaPos === 13 || ramaPos === 17 || ramaPos === 24 || ramaPos === 27) {
+      decision = true;
+      pantallaDecision();
+    } else if (ramaPos === 30) {
+      muerte = true;
+      pantallaMuerte();
+      siguiente = false;
+    } else {
+      botonSiguiente();
+    }
+  }
+
   if (rama === 1) {
     image(rama1[ramaPos], 0, 0, width, height);
     text(rama1dialogos[ramaPos], 0, 50, width);
@@ -93,14 +110,14 @@ function draw() {
       muerte = true;
       pantallaMuerte();
       siguiente = false;
-    } if ( ramaPos === 6){
+    }
+    if ( ramaPos === 6) {
       pantallaMuerte();
       siguiente = false;
-      
     }
     return;
   }
-  
+
   if (rama === 4) {
     image(rama2a[ramaPos], 0, 0, width, height);
     text(rama2a_dialogos[ramaPos], 0, 50, width);
@@ -173,7 +190,7 @@ function draw() {
     return;
   }
 
-if (rama === 9) {
+  if (rama === 9) {
     image(rama5[ramaPos], 0, 0, width, height);
     text(rama5dialogo[ramaPos], 0, 50, width);
     botonSiguiente();
@@ -184,23 +201,6 @@ if (rama === 9) {
     }
     return;
   }
-
-  if (rama === 0) {
-  image(inicio[ramaPos], 0, 0, width, height);
-  text(InicioTexto[ramaPos], 0, 50, width);
-  siguiente = true;
-
-  if (ramaPos === 2 || ramaPos === 6 || ramaPos === 9 || ramaPos === 13 || ramaPos === 17 || ramaPos === 24 || ramaPos === 27) {
-    decision = true;
-    pantallaDecision();
-  } else if (ramaPos === 30) {
-    muerte = true;
-    pantallaMuerte();
-    siguiente = false;
-  } else {
-    botonSiguiente();
-  }
-}
 }
 
 function botonSiguiente() {
@@ -212,11 +212,11 @@ function botonSiguiente() {
     fill(255);
   }
 }
-  
+
 function mousePressed() {
-  
+
   if (!musicaIniciada) {
-    sound.loop();  
-    musicaIniciada = true;  
+    sound.loop();
+    musicaIniciada = true;
   }
 }
